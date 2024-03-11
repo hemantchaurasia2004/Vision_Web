@@ -3,6 +3,7 @@ import './Framecomponent.css';
 
 const BrailleToEnglishConverter = ({ brailleText }) => {
   const [displayEnglish, setDisplayEnglish] = useState('');
+  const [displayBraille, setDisplayBraille] = useState('');
 
   useEffect(() => {
     const brailleToEnglish = (brailleWord) => {
@@ -15,19 +16,9 @@ const BrailleToEnglishConverter = ({ brailleText }) => {
         '⠺⠁⠽': 'Way',
         '⠞⠕': 'To',
         '⠞⠽⠏⠑': 'Type',
-        '⠇⠗⠑⠍': 'Lorem',
         '⠁⠽': 'Is',
         '⠊⠎': 'A',
-        '⠛⠕⠕⠙': 'Good',
-        '⠺⠁⠽': 'Way',
-        '⠞⠕': 'To',
-        '⠞⠽⠏⠑': 'Type',
-        '⠁⠽': 'Is',
-        '⠊⠎': 'A',
-        '⠛⠕⠕⠙': 'Good',
-        '⠁⠽': 'Ay',
-        '⠞⠕': 'To',
-        '⠞⠽⠏⠑': 'Type'
+        '⠁⠽': 'Ay'
       };
       return englishMapping[brailleWord] || brailleWord;
     };
@@ -36,8 +27,9 @@ const BrailleToEnglishConverter = ({ brailleText }) => {
       const brailleWords = brailleText.split(' ');
       let displayText = '';
       for (let i = 0; i < brailleWords.length; i++) {
+        setDisplayBraille(brailleWords[i]); // Display current Braille word
         displayText += brailleToEnglish(brailleWords[i]) + ' ';
-        setDisplayEnglish(displayText.trim());
+        setDisplayEnglish(displayText.trim()); // Update English text
         await new Promise(resolve => setTimeout(resolve, 1000));
       }
     };
@@ -47,6 +39,7 @@ const BrailleToEnglishConverter = ({ brailleText }) => {
 
   return (
     <div>
+      <h1 className="text-size3 text-col r-margin-bottom">{displayBraille}</h1>
       <h1 className="text-size3 text-col r-margin-bottom">{displayEnglish}</h1>
     </div>
   );

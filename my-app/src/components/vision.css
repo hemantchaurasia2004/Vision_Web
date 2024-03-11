@@ -1,0 +1,32 @@
+.flex{
+    display: flex;
+}
+
+.top-padding{
+    padding-top: 250px;
+}
+
+.align-center{
+    align-items: center;
+}   
+
+.justify-center{
+    justify-content: center;
+}
+
+.size{
+    width: 50%;
+    height: 100%;
+}
+
+.height{
+    height: 96px
+}
+
+.text-size{
+    font-size: 96px;
+}
+
+.text-col{
+    color: #fff;
+}

@@ -4,12 +4,13 @@ import './App.css';
 import Mainpage from './pages/mainpage';
 
 function App() {
+  
   return (
-    <>
+    <div className='bg-col height2'>
       <Routes>
         <Route path="/" element={<Mainpage />} />
       </Routes>
-    </>
+    </div>
   );
 }
 

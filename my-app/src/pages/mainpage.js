@@ -1,15 +1,25 @@
-import React from 'react'
-import Vision from '../components/vision'
-import './mainpage.css'
-import FrameComponent from '../components/Framecomponent'
+import React, { useState, useEffect } from 'react'; // Import useState and useEffect from 'react'
 
-function mainpage() {
+import Vision from '../components/vision';
+import './mainpage.css';
+import FrameComponent from '../components/Framecomponent';
+
+function Mainpage() { 
+
+  const [showcomponent, setShowComponent] = useState(false);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setShowComponent(!showcomponent);
+    }, 3600); 
+  }, []); 
+
   return (
     <div className='bg-col'>
         <Vision />
-        <FrameComponent />
+        {showcomponent && <FrameComponent />}
     </div>
   )
 }
 
-export default mainpage
+export default Mainpage; 

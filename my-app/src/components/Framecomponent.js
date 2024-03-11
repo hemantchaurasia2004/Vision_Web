@@ -1,39 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import './Framecomponent.css';
+const brailleText1 = "Lorem Ipsum Is A Good Way To Type";
+const brailleText2 = "Lorem Is A Good Way To Type Vision";
+const brailleText3 = "Vision";
 
 const BrailleToEnglishConverter = ({ brailleText }) => {
-  const [displayEnglish, setDisplayEnglish] = useState('');
   const [displayBraille, setDisplayBraille] = useState('');
 
   useEffect(() => {
     const brailleToEnglish = (brailleWord) => {
       const englishMapping = {
-        '⠧⠊⠎⠊⠕⠝': 'Vision',
-        '⠇⠕⠗⠑⠍': 'Lorem',
-        '⠊⠏⠎⠥⠍': 'Ipsum',
-        '⠁': 'A',
-        '⠛⠕⠕⠙': 'Good',
-        '⠺⠁⠽': 'Way',
-        '⠞⠕': 'To',
-        '⠞⠽⠏⠑': 'Type',
-        '⠁⠽': 'Is',
-        '⠊⠎': 'A',
-        '⠁⠽': 'Ay'
+        'Vision': '⠧⠊⠎⠊⠕⠝',
+        'Lorem': '⠇⠕⠗⠑⠍',
+        'Ipsum': '⠊⠏⠎⠥⠍',
+        'A': '⠁',
+        'Good': '⠛⠕⠕⠙',
+        'Way': '⠺⠁⠽',
+        'To': '⠞⠕',
+        'Type': '⠞⠽⠏⠑',
+        'Is': '⠁⠽',
       };
+      
       return englishMapping[brailleWord] || brailleWord;
     };
 
     const animateTyping = async () => {
       const brailleWords = brailleText.split(' ');
-      let displayText = '';
-
-      // Display the whole line of Braille text first
-      setDisplayBraille(brailleText);
-
-      // Convert each word to English one by one
-      for (let i = 0; i < brailleWords.length; i++) {
-        displayText += brailleToEnglish(brailleWords[i]) + ' ';
-        setDisplayEnglish(displayText.trim()); // Update English text
+      for (let i = 0; i <= brailleWords.length; i++) {
+        let displayText = brailleWords.slice(0,i).join(' ');
+        displayText += ' ';
+        const after = brailleWords.slice(i).map(brailleToEnglish).join(' ');
+        displayText += after;
+        setDisplayBraille(displayText); // Update English text
         await new Promise(resolve => setTimeout(resolve, 1000));
       }
     };
@@ -44,21 +42,17 @@ const BrailleToEnglishConverter = ({ brailleText }) => {
   return (
     <div>
       <h1 className="text-size3 text-col r-margin-bottom">{displayBraille}</h1>
-      <h1 className="text-size3 text-col r-margin-bottom">{displayEnglish}</h1>
     </div>
   );
 };
 
 const FrameComponent = () => {
-  const brailleText1 = "⠇⠕⠗⠑⠍ ⠊⠏⠎⠥⠍ ⠊⠎ ⠁ ⠛⠕⠕⠙ ⠺⠁⠽ ⠞⠕ ⠞⠽⠏⠑";
-  const brailleText2 = "⠇⠕⠗⠑⠍ ⠊⠏⠎⠥⠍ ⠁ ⠛⠕⠕⠙ ⠺⠁⠽ ⠞⠕ ⠞⠽⠏⠑";
-  const brailleText3 = "⠧⠊⠎⠊⠕⠝";
 
   return (
     <div className="flex padding-top pad-left">
-      <BrailleToEnglishConverter brailleText={brailleText3} />
-      <BrailleToEnglishConverter brailleText={brailleText1} />
-      <BrailleToEnglishConverter brailleText={brailleText2} />
+      <BrailleToEnglishConverter key={1} brailleText={brailleText3} />
+      <BrailleToEnglishConverter key={2} brailleText={brailleText1} />
+      <BrailleToEnglishConverter key={3} brailleText={brailleText2} />
     </div>
   );
 };

@@ -46,11 +46,15 @@ const BrailleToEnglishConverter = ({ brailleText }) => {
 };
 
 const FrameComponent = () => {
-  const brailleText = "⠧⠊⠎⠊⠕⠝ ⠇⠕⠗⠑⠍ ⠊⠏⠎⠥⠍ ⠁ ⠛⠕⠕⠙ ⠺⠁⠽ ⠞⠕ ⠞⠽⠏⠑ ⠇⠗⠑⠍ ⠁⠽ ⠞⠕ ⠞⠽⠏⠑";
+  const brailleText1 = "⠧⠊⠎⠊⠕⠝ ⠇⠕⠗⠑⠍ ⠊⠏⠎⠥⠍ ⠁ ⠛⠕⠕⠙ ⠺⠁⠽ ⠞⠕ ⠞⠽⠏⠑ ⠇⠗⠑⠍ ⠁⠽ ⠞⠕ ⠞⠽⠏⠑";
+  const brailleText2 = "⠁⠽ ⠊⠎ ⠁⠽";
+  const brailleText3 = "⠊⠎ ⠁⠽";
 
   return (
     <div className="flex padding-top pad-left">
-      <BrailleToEnglishConverter brailleText={brailleText} />
+      <BrailleToEnglishConverter brailleText={brailleText1} />
+      <BrailleToEnglishConverter brailleText={brailleText2} />
+      <BrailleToEnglishConverter brailleText={brailleText3} />
     </div>
   );
 };

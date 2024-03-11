@@ -22,7 +22,7 @@ const EnglishToBrailleConverter = ({ englishText }) => {
         const before = englishText.slice(0, i);
         const after = englishText.slice(i).split('').map(englishToBraille).join('');
         setDisplayBraille(before + after);
-        await new Promise(resolve => setTimeout(resolve, 200)); // Adjust the timeout for typing speed
+        await new Promise(resolve => setTimeout(resolve, 500)); // Adjust the timeout for typing speed
       }
     };
 

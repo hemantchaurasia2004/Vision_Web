@@ -26,8 +26,12 @@ const BrailleToEnglishConverter = ({ brailleText }) => {
     const animateTyping = async () => {
       const brailleWords = brailleText.split(' ');
       let displayText = '';
+
+      // Display the whole line of Braille text first
+      setDisplayBraille(brailleText);
+
+      // Convert each word to English one by one
       for (let i = 0; i < brailleWords.length; i++) {
-        setDisplayBraille(brailleWords[i]); // Display current Braille word
         displayText += brailleToEnglish(brailleWords[i]) + ' ';
         setDisplayEnglish(displayText.trim()); // Update English text
         await new Promise(resolve => setTimeout(resolve, 1000));
@@ -46,15 +50,15 @@ const BrailleToEnglishConverter = ({ brailleText }) => {
 };
 
 const FrameComponent = () => {
-  const brailleText1 = "⠧⠊⠎⠊⠕⠝ ⠇⠕⠗⠑⠍ ⠊⠏⠎⠥⠍ ⠁ ⠛⠕⠕⠙ ⠺⠁⠽ ⠞⠕ ⠞⠽⠏⠑ ⠇⠗⠑⠍ ⠁⠽ ⠞⠕ ⠞⠽⠏⠑";
-  const brailleText2 = "⠁⠽ ⠊⠎ ⠁⠽";
-  const brailleText3 = "⠊⠎ ⠁⠽";
+  const brailleText1 = "⠇⠕⠗⠑⠍ ⠊⠏⠎⠥⠍ ⠊⠎ ⠁ ⠛⠕⠕⠙ ⠺⠁⠽ ⠞⠕ ⠞⠽⠏⠑";
+  const brailleText2 = "⠇⠕⠗⠑⠍ ⠊⠏⠎⠥⠍ ⠁ ⠛⠕⠕⠙ ⠺⠁⠽ ⠞⠕ ⠞⠽⠏⠑";
+  const brailleText3 = "⠧⠊⠎⠊⠕⠝";
 
   return (
     <div className="flex padding-top pad-left">
+      <BrailleToEnglishConverter brailleText={brailleText3} />
       <BrailleToEnglishConverter brailleText={brailleText1} />
       <BrailleToEnglishConverter brailleText={brailleText2} />
-      <BrailleToEnglishConverter brailleText={brailleText3} />
     </div>
   );
 };

@@ -1,22 +1,65 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import './Framecomponent.css';
 
-const FrameComponent = () => {
-  return (
-    
-    <div className="flex padding-top pad-left">
-  <h1 className="text-size3 text-col r-margin-bottom">
-    ⠧⠊⠎⠊⠕⠝
-  </h1>
-  <div className="w-[695px] h-24 relative text-13xl inline-block mq450:text-lgi mq1050:text-7xl">
-    <p className="text-size2 text-col ">⠇⠕⠗⠑⠍ ⠊⠏⠎⠥⠍ ⠊⠎ ⠁ ⠛⠕⠕⠙ ⠺⠁⠽ ⠞⠕ ⠞⠽⠏⠑</p>
-    <p className="text-col text-size2 ">⠇⠕⠗⠑⠍ ⠊⠏⠎⠥⠍ ⠁ ⠛⠕⠕⠙ ⠺⠁⠽ ⠞⠕ ⠞⠽⠏⠑</p>
-    <p className="text-col text-size2 ">⠇⠗⠑⠍ ⠊⠏⠎⠥⠍ ⠊⠎ ⠁ ⠛⠕⠕⠙ ⠁⠽ ⠞⠕ ⠞⠽⠏⠑ </p>
-  </div>
-</div>
+const BrailleToEnglishConverter = ({ brailleText }) => {
+  const [displayEnglish, setDisplayEnglish] = useState('');
 
-      
-    )
+  useEffect(() => {
+    const brailleToEnglish = (brailleWord) => {
+      const englishMapping = {
+        '⠧⠊⠎⠊⠕⠝': 'Vision',
+        '⠇⠕⠗⠑⠍': 'Lorem',
+        '⠊⠏⠎⠥⠍': 'Ipsum',
+        '⠁': 'A',
+        '⠛⠕⠕⠙': 'Good',
+        '⠺⠁⠽': 'Way',
+        '⠞⠕': 'To',
+        '⠞⠽⠏⠑': 'Type',
+        '⠇⠗⠑⠍': 'Lorem',
+        '⠁⠽': 'Is',
+        '⠊⠎': 'A',
+        '⠛⠕⠕⠙': 'Good',
+        '⠺⠁⠽': 'Way',
+        '⠞⠕': 'To',
+        '⠞⠽⠏⠑': 'Type',
+        '⠁⠽': 'Is',
+        '⠊⠎': 'A',
+        '⠛⠕⠕⠙': 'Good',
+        '⠁⠽': 'Ay',
+        '⠞⠕': 'To',
+        '⠞⠽⠏⠑': 'Type'
+      };
+      return englishMapping[brailleWord] || brailleWord;
+    };
+
+    const animateTyping = async () => {
+      const brailleWords = brailleText.split(' ');
+      let displayText = '';
+      for (let i = 0; i < brailleWords.length; i++) {
+        displayText += brailleToEnglish(brailleWords[i]) + ' ';
+        setDisplayEnglish(displayText.trim());
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+    };
+
+    animateTyping();
+  }, [brailleText]);
+
+  return (
+    <div>
+      <h1 className="text-size3 text-col r-margin-bottom">{displayEnglish}</h1>
+    </div>
+  );
+};
+
+const FrameComponent = () => {
+  const brailleText = "⠧⠊⠎⠊⠕⠝ ⠇⠕⠗⠑⠍ ⠊⠏⠎⠥⠍ ⠁ ⠛⠕⠕⠙ ⠺⠁⠽ ⠞⠕ ⠞⠽⠏⠑ ⠇⠗⠑⠍ ⠁⠽ ⠞⠕ ⠞⠽⠏⠑";
+
+  return (
+    <div className="flex padding-top pad-left">
+      <BrailleToEnglishConverter brailleText={brailleText} />
+    </div>
+  );
 };
 
 export default FrameComponent;

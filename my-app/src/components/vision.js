@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './vision.css';
+import './Styling/Framecomponent.css';
 import AnimatedGif from "./AnimatedGifff";
-import gifFile from './vision_gif.gif';
+import gifFile from './utlis/vision_gif.gif';
 
 const Vision = () => {
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Framecomponent.css';
+import './Styling/Framecomponent.css';
 const brailleText1 = "Navigation Through Dynamic Bluetooth Host Changing";
 const brailleText2 = "Vision revolutionizes navigation for the visually impaired by seamlessly adapting to changing environments. Its Bluetooth host-changing capabilities empower users with dynamic connectivity, ensuring a continuous navigation experience.";
 const brailleText3 = "Spatial Audio Assistive Technology";

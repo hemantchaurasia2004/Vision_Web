@@ -1,5 +1,5 @@
 import React from "react";
-import './AnimatedGif.css';
+import './Styling/Framecomponent.css';
 
 const AnimatedGif = ({src, alt}) => {
     return <img className="width" src={src} alt={alt} />

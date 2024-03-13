@@ -10,13 +10,13 @@ const BrailleToEnglishConverter = ({ brailleText }) => {
   useEffect(() => {
     const brailleToEnglish = (brailleWord) => {
       const englishMapping = {
+        'Navigation': '⠝⠁⠧⠊⠛⠁⠞⠊⠕⠝',
+        'Through': '⠞⠓⠗⠕⠥⠛⠓',
+        'Dynamic': '⠙⠽⠝⠁⠍⠊⠉',
+        'Bluetooth': '⠃⠇⠥⠑⠞⠕⠕⠞⠓',
+        'Host': '⠓⠕⠎⠞',
+        'Changing': '⠉⠓⠁⠝⠛⠊⠝⠛',
         'Vision': '⠧⠊⠎⠊⠕⠝',
-        'Lorem': '⠇⠕⠗⠑⠍',
-        'Ipsum': '⠊⠏⠎⠥⠍',
-        'A': '⠁',
-        'Good': '⠛⠕⠕⠙',
-        'Way': '⠺⠁⠽',
-        'To': '⠞⠕',
         'Type': '⠞⠽⠏⠑',
         'Is': '⠁⠽',
       };

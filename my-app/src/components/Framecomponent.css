@@ -8,10 +8,10 @@
 }
 
 .text-size2{
-    font-size: 16px;
+    font-size: 8px;
 }
 .text-size3{
-    font-size: 32px;
+    font-size: 20px;
 }
 
 .r-margin-bottom{
@@ -26,3 +26,21 @@
     padding-left: 40px;
 }
 
+.margin{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.text-align{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.font-fam{
+    font-family: Helvetica;
+}
+
+.bluetoothBlue {
+    color: blue;
+}

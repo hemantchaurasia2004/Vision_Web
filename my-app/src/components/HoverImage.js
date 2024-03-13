@@ -1,31 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import Frame1 from './utlis/Frame1.jpg';
 import Frame3 from './utlis/Frame3.png';
+import './Styling/HoverImage.css';
 
 const HoverImage = () => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [clipPathStyle, setClipPathStyle] = useState('none');
 
-  const handleMouseMove = (event) => {
-    const rect = event.target.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
+  useEffect(() => {
+    const container = document.querySelector('.container');
 
-    setClipPathStyle(`circle(50px at ${x}px ${y}px)`);
-  };
+    const handleMouseMove = (event) => {
+      const overlay = container.querySelector('.overlay');
+      const rect = container.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
 
-  const handleMouseLeave = () => {
-    setClipPathStyle('none');
-    setIsHovered(false);
-  };
+      overlay.style.clipPath = `circle(40px at ${x}px ${y}px)`; 
+      container.classList.add('hover');
+    };
+
+    const handleMouseLeave = () => {
+      const overlay = container.querySelector('.overlay');
+      overlay.style.clipPath = 'none';
+      container.classList.remove('hover');
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mouseleave', handleMouseLeave);
+    };
+
+  }, []); // Empty dependency array to ensure effect runs only once
 
   return (
-    <div className={`container ${isHovered ? 'hover' : ''}`}
-         onMouseMove={handleMouseMove}
-         onMouseLeave={handleMouseLeave}>
-      <img className="image" src={Frame1} alt="Bottom Image" />
-      <img className="overlay" src={Frame3} alt="Top Image"
-           style={{ clipPath: clipPathStyle }} />
+    <div className="container">
+      <img className="image cent" src={Frame1} alt="Bottom Image" />
+      <img className="overlay" src={Frame3} alt="Top Image" />
     </div>
   );
 };

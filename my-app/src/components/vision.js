@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './Styling/Framecomponent.css';
+import './Styling/vision.css';
 import AnimatedGif from "./AnimatedGifff";
 import gifFile from './utlis/vision_gif.gif';
 

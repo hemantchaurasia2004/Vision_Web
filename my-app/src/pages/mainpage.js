@@ -6,18 +6,10 @@ import FrameComponent from '../components/Framecomponent';
 
 function Mainpage() { 
 
-  const [showcomponent, setShowComponent] = useState(false);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setShowComponent(!showcomponent);
-    }, 3600); 
-  }, []); 
-
   return (
     <div className='bg-col'>
         <Vision />
-        {showcomponent && <FrameComponent />}
+        <FrameComponent />
     </div>
   )
 }

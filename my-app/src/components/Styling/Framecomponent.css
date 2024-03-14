@@ -3,15 +3,11 @@
     flex-direction: column;
 }
 
-.padding-top{
-    padding-top: 50px;
-}
-
 .text-size2{
-    font-size: 8px;
+    font-size: 70%;
 }
 .text-size3{
-    font-size: 20px;
+    font-size: 100%
 }
 
 .r-margin-bottom{
@@ -22,14 +18,6 @@
     color: #fff;
 }
 
-.pad-left{
-    padding-left: 40px;
-}
-
-.margin{
-    margin-left: 20%;
-    margin-right: 20%;
-}
 
 .text-align{
     align-items: center;
@@ -38,9 +26,19 @@
 }
 
 .font-fam{
-    font-family: Helvetica;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.inner_dim{
+    width: 60vw;
+    height: 60vh;
 }
 
 .bluetoothBlue {
     color: blue;
+}
+
+.comp_size{
+    width: 100vm;
+    height: 100vh;
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Styling/Framecomponent.css';
-const brailleText1 = "Navigation Through Dynamic Bluetooth Host Changing";
-const brailleText2 = "Vision revolutionizes navigation for the visually impaired by seamlessly adapting to changing environments. Its Bluetooth host-changing capabilities empower users with dynamic connectivity, ensuring a continuous navigation experience.";
+const brailleText3 = "Spatial Audio Assistive Technology";
+const brailleText4 = "revolutionary way of perceiving and navigating your surroundings through immersive sound, opening new dimensions for the visually impaired. Elevate your sensory experience with Vision– where spatial awareness meets innovation";
 
 const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
   const [displayBraille, setDisplayBraille] = useState('');
@@ -132,20 +132,20 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
   );
 };
 
-const FrameComponent = () => {
+const FrameComponent2 = () => {
 
   return (
     <div className="flex text-align font-fam">
       <div className='comp_size flex inner_dim text-align'>
         <div className='text-size3'>
-          <BrailleToEnglishConverter key={1} brailleText={brailleText1} applyBlueColor={1} />
+          <BrailleToEnglishConverter key={3} brailleText={brailleText3} applyBlueColor={3} />
         </div>
         <div className='text-size2'>
-          <BrailleToEnglishConverter key={2} brailleText={brailleText2} applyBlueColor={2} />
+          <BrailleToEnglishConverter key={4} brailleText={brailleText4} applyBlueColor={2} />
         </div>
       </div>
     </div>
   );
 };
 
-export default FrameComponent;
+export default FrameComponent2;

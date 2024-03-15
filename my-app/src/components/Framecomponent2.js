@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Styling/Framecomponent.css';
-const brailleText3 = "Spatial Audio Assistive Technology";
-const brailleText4 = "revolutionary way of perceiving and navigating your surroundings through immersive sound, opening new dimensions for the visually impaired. Elevate your sensory experience with Vision– where spatial awareness meets innovation";
 
+const brailleText1 = "Spatial Audio Assistive Technology";
+const brailleText2 = "Revolutionary way of perceiving and navigating your surroundings through immersive sound, opening new dimensions for the visually impaired. Elevate your sensory experience with Vision– where spatial awareness meets innovation";
+let audiocheck = true;
 const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
   const [displayBraille, setDisplayBraille] = useState('');
   const containerRef = useRef(null);
+  const audioRef = useRef(null);
 
   useEffect(() => {
     const brailleToEnglish = (brailleWord) => {
@@ -81,8 +83,6 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
         'meets': '⠍⠑⠑⠞⠎',
         'innovation': '⠊⠝⠝⠕⠧⠁⠞⠊⠕⠝'
       };
-      
-      
       return englishMapping[brailleWord] || brailleWord;
     };
 
@@ -94,10 +94,24 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
         const after = brailleWords.slice(i).map(brailleToEnglish).join(' ');
         displayText += after;
         setDisplayBraille(displayText); // Update English text
-        if (i === 0 && (applyBlueColor === 1 || applyBlueColor === 3)) {
-          await new Promise(resolve => setTimeout(resolve, 2000));
-        } else if (i === 0) {
-          await new Promise(resolve => setTimeout(resolve, 8000));
+
+        if (i === 1 && audiocheck === true) {
+          let speaktext = brailleWords.join(' ');
+          const speech = new SpeechSynthesisUtterance(speaktext);
+          speech.lang = 'en-US';
+          speech.volume = 1;
+          audioRef.current = window.speechSynthesis.speak(speech);
+          console.log(speaktext)
+        }
+
+        if (i === 0 && (applyBlueColor === 1)) {
+          await new Promise(resolve => setTimeout(resolve, 1500));
+        }
+        else if(i === 0 && (applyBlueColor === 3)){
+          await new Promise(resolve => setTimeout(resolve, 5200));
+        }
+         else if (i === 0) {
+          await new Promise(resolve => setTimeout(resolve, 7500));
         } else {
           await new Promise(resolve => setTimeout(resolve, 1000));
         }
@@ -118,6 +132,19 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
     return () => observer.disconnect();
   }, [brailleText]);
 
+  useEffect(() => {
+    const handleClick = () => {
+        window.speechSynthesis.cancel(audioRef.current);
+        audiocheck = false;
+    };
+
+    window.addEventListener('click', handleClick);
+
+    return () => {
+      window.removeEventListener('click', handleClick);
+    };
+  }, []);
+
   return (
     <div ref={containerRef}>
       <h1 className="text-col text-align r-margin-bottom font-fam">
@@ -132,20 +159,19 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
   );
 };
 
-const FrameComponent2 = () => {
-
+const FrameComponent = () => {
   return (
     <div className="flex text-align font-fam">
       <div className='comp_size flex inner_dim text-align'>
-        <div className='text-size3'>
-          <BrailleToEnglishConverter key={3} brailleText={brailleText3} applyBlueColor={3} />
+        <div className='text-size3 headline_design3'>
+          <BrailleToEnglishConverter key={1} brailleText={brailleText1} applyBlueColor={1} />
         </div>
-        <div className='text-size2'>
-          <BrailleToEnglishConverter key={4} brailleText={brailleText4} applyBlueColor={2} />
+        <div className='text-size2 size_def2 text_design'>
+          <BrailleToEnglishConverter key={2} brailleText={brailleText2} applyBlueColor={2} />
         </div>
       </div>
     </div>
   );
 };
 
-export default FrameComponent2;
+export default FrameComponent;

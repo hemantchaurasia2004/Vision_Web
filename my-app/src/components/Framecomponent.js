@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Styling/Framecomponent.css';
+
 const brailleText1 = "Navigation Through Dynamic Bluetooth Host Changing";
 const brailleText2 = "Vision revolutionizes navigation for the visually impaired by seamlessly adapting to changing environments. Its Bluetooth host-changing capabilities empower users with dynamic connectivity, ensuring a continuous navigation experience.";
-
+let audiocheck = true;
 const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
   const [displayBraille, setDisplayBraille] = useState('');
   const containerRef = useRef(null);
+  const audioRef = useRef(null);
 
   useEffect(() => {
     const brailleToEnglish = (brailleWord) => {
@@ -81,8 +83,6 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
         'meets': '⠍⠑⠑⠞⠎',
         'innovation': '⠊⠝⠝⠕⠧⠁⠞⠊⠕⠝'
       };
-      
-      
       return englishMapping[brailleWord] || brailleWord;
     };
 
@@ -94,10 +94,20 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
         const after = brailleWords.slice(i).map(brailleToEnglish).join(' ');
         displayText += after;
         setDisplayBraille(displayText); // Update English text
+
+        if (i === 1 && audiocheck === true) {
+          let speaktext = brailleWords.join(' ');
+          const speech = new SpeechSynthesisUtterance(speaktext);
+          speech.lang = 'en-US';
+          speech.volume = 1;
+          audioRef.current = window.speechSynthesis.speak(speech);
+          console.log(speaktext)
+        }
+
         if (i === 0 && (applyBlueColor === 1 || applyBlueColor === 3)) {
-          await new Promise(resolve => setTimeout(resolve, 2000));
+          await new Promise(resolve => setTimeout(resolve, 1500));
         } else if (i === 0) {
-          await new Promise(resolve => setTimeout(resolve, 8000));
+          await new Promise(resolve => setTimeout(resolve, 7500));
         } else {
           await new Promise(resolve => setTimeout(resolve, 1000));
         }
@@ -118,6 +128,19 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
     return () => observer.disconnect();
   }, [brailleText]);
 
+  useEffect(() => {
+    const handleClick = () => {
+        window.speechSynthesis.cancel(audioRef.current);
+        audiocheck = true;
+    };
+
+    window.addEventListener('click', handleClick);
+
+    return () => {
+      window.removeEventListener('click', handleClick);
+    };
+  }, []);
+
   return (
     <div ref={containerRef}>
       <h1 className="text-col text-align r-margin-bottom font-fam">
@@ -133,7 +156,6 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
 };
 
 const FrameComponent = () => {
-
   return (
     <div className="flex text-align font-fam">
       <div className='comp_size flex inner_dim text-align'>

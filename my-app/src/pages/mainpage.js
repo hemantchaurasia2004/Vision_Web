@@ -12,7 +12,7 @@ function Mainpage() {
   const [scrollingEnabled, setScrollingEnabled] = useState(true);
 
   // Define durations for each section (in milliseconds)
-  const durations = [2000, 100000, 60000, 2000];
+  const durations = [2000, 30000, 30000, 5000];
 
   useEffect(() => {
     const interval = setInterval(() => {

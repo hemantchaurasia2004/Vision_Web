@@ -12,6 +12,7 @@
 
 .r-margin-bottom{
     margin-bottom: 0px;
+    margin-top: 0px;
 }
 
 .text-col{
@@ -21,16 +22,17 @@
 
 .text-align{
     align-items: center;
-    justify-content: center;
     text-align: center;
 }
 
 .font-fam{
-    font-family: 'Helvetica', sans-serif;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .inner_dim{
-    width: 60vw;
+    width: 90vw;
     height: 60vh;
 }
 
@@ -41,4 +43,62 @@
 .comp_size{
     width: 100vm;
     height: 100vh;
+}
+
+.headline_design{
+    font-size: 26px;
+    margin-bottom: 20vh;
+}
+.headline_design3{
+    margin-top: 10vh;
+    font-size: 26px;
+    margin-bottom: 20vh;
+}
+.headline_design2{
+    margin-top: 10vh;
+    font-size: 26px;
+}
+
+.text_design{
+    font-size: 15px;
+}
+
+.size_def{
+    width : 68vw;
+}
+
+.size_def2{
+    width : 60vw;
+}
+
+@media (max-width: 455px) {
+        
+        .comp_size{
+            width: 100vm;
+            height: auto;
+        }
+
+        .inner_dim{
+            width: 90vw;
+            height: auto;
+        }
+
+
+        .headline_design{
+            font-size: 12px;
+            margin-bottom: 10vh;
+        }
+        .headline_design3{
+            margin-top: 5vh;
+            font-size: 12px;
+            margin-bottom: 10vh;
+        }
+        .headline_design2{
+            margin-top: 5vh;
+            font-size: 12px;
+        }
+
+        .text_design{
+            font-size: 8px;
+        }
 }

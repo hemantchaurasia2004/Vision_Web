@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Styling/Framecomponent.css';
 
-const brailleText1 = "Navigation Through Dynamic Bluetooth Host Changing";
+const brailleText1 = "Navigation Through Dynamic Bluetooth";
+const brailleText3 = "Host Changing";
+const brailleText4 = "Navigation Through Dynamic Bluetooth Host Changing";
 const brailleText2 = "Vision revolutionizes navigation for the visually impaired by seamlessly adapting to changing environments. Its Bluetooth host-changing capabilities empower users with dynamic connectivity, ensuring a continuous navigation experience.";
+
 let audiocheck = true;
 const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
   const [displayBraille, setDisplayBraille] = useState('');
@@ -95,8 +98,12 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
         displayText += after;
         setDisplayBraille(displayText); // Update English text
 
-        if (i === 1 && audiocheck === true) {
+        if (i === 1 && audiocheck === true && applyBlueColor!=3) {
           let speaktext = brailleWords.join(' ');
+
+          if(applyBlueColor === 1){ 
+            speaktext = brailleText4;
+          }
           const speech = new SpeechSynthesisUtterance(speaktext);
           speech.lang = 'en-US';
           speech.volume = 1;
@@ -104,9 +111,13 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
           console.log(speaktext)
         }
 
-        if (i === 0 && (applyBlueColor === 1 || applyBlueColor === 3)) {
+        if (i === 0 && (applyBlueColor === 1)) {
           await new Promise(resolve => setTimeout(resolve, 1500));
-        } else if (i === 0) {
+        }
+        else if(i === 0 && (applyBlueColor === 3)){
+          await new Promise(resolve => setTimeout(resolve, 5200));
+        }
+         else if (i === 0) {
           await new Promise(resolve => setTimeout(resolve, 7500));
         } else {
           await new Promise(resolve => setTimeout(resolve, 1000));
@@ -131,7 +142,7 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
   useEffect(() => {
     const handleClick = () => {
         window.speechSynthesis.cancel(audioRef.current);
-        audiocheck = true;
+        audiocheck = false;
     };
 
     window.addEventListener('click', handleClick);
@@ -159,10 +170,13 @@ const FrameComponent = () => {
   return (
     <div className="flex text-align font-fam">
       <div className='comp_size flex inner_dim text-align'>
-        <div className='text-size3'>
+        <div className='text-size3 headline_design2'>
           <BrailleToEnglishConverter key={1} brailleText={brailleText1} applyBlueColor={1} />
         </div>
-        <div className='text-size2'>
+        <div className='text-size3 headline_design'>
+          <BrailleToEnglishConverter key={3} brailleText={brailleText3} applyBlueColor={3} />
+        </div>
+        <div className='text-size2 size_def text_design'>
           <BrailleToEnglishConverter key={2} brailleText={brailleText2} applyBlueColor={2} />
         </div>
       </div>

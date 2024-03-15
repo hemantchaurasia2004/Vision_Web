@@ -51,7 +51,7 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
         'Audio': '⠁⠥⠙⠊⠕',
         'Assistive': '⠁⠎⠎⠊⠎⠞⠊⠧⠑',
         'Technology': '⠞⠑⠉⠓⠝⠕⠇⠕⠛⠽',
-        'revolutionary': '⠗⠑⠧⠕⠇⠥⠞⠊⠕⠝⠁⠗⠽',
+        'Revolutionary': '⠗⠑⠧⠕⠇⠥⠞⠊⠕⠝⠁⠗⠽',
         'way': '⠺⠁⠽',
         'of': '⠕⠋',
         'perceiving': '⠏⠑⠗⠉⠑⠊⠧⠊⠝⠛',

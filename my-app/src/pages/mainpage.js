@@ -5,6 +5,7 @@ import FrameComponent from '../components/Framecomponent';
 import FrameComponent2 from '../components/Framecomponent2';
 import HoverImage from '../components/HoverImage';
 import Footer from '../components/Footer';
+import ShowImage from '../components/ShowImage';
 
 function Mainpage() {
   const [scrollIndex, setScrollIndex] = useState(0);
@@ -12,7 +13,7 @@ function Mainpage() {
   const [scrollingEnabled, setScrollingEnabled] = useState(true);
 
   // Define durations for each section (in milliseconds)
-  const durations = [2000, 30000, 30000, 5000];
+  const durations = [2000, 30000, 6000, 30000, 5000];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -60,10 +61,12 @@ function Mainpage() {
         <FrameComponent />
       </div>
       <div ref={divRefs[2]}>
-        <FrameComponent2 />
+        < ShowImage />
       </div>
       <div ref={divRefs[3]}>
-        <HoverImage />
+        <FrameComponent2 />
+      </div>
+      <div ref={divRefs[4]}>
         <Footer />
       </div>
     </div>

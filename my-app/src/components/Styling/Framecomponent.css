@@ -28,7 +28,7 @@
 .font-fam{
     font-family: "Poppins", sans-serif;
     font-weight: 400;
-    font-style: normal;
+    font-style: normal;
 }
 
 .inner_dim{
@@ -69,4 +69,36 @@
 
 .size_def2{
     width : 60vw;
+}
+
+@media (max-width: 455px) {
+        
+        .comp_size{
+            width: 100vm;
+            height: auto;
+        }
+
+        .inner_dim{
+            width: 90vw;
+            height: auto;
+        }
+
+
+        .headline_design{
+            font-size: 12px;
+            margin-bottom: 10vh;
+        }
+        .headline_design3{
+            margin-top: 5vh;
+            font-size: 12px;
+            margin-bottom: 10vh;
+        }
+        .headline_design2{
+            margin-top: 5vh;
+            font-size: 12px;
+        }
+
+        .text_design{
+            font-size: 8px;
+        }
 }

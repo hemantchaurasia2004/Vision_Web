@@ -4,7 +4,7 @@ import './Styling/ShowImage.css'
 
 function ShowImage() {
   return (
-    <div className='image_style comp_size'>
+    <div className='image_style comp_size2'>
       <img className='img_sty' src={ShoImage} alt="Google Logo" />
     </div>
   )

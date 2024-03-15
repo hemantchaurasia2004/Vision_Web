@@ -11,7 +11,14 @@
 
 }
 
-.comp_size{
+.comp_size2{
     width: 100vm;
     height: 100vh;
+}
+
+@media (max-width: 455px) {
+    .comp_size2{
+        width: 100vm;
+        height: 50vh;
+    }
 }

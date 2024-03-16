@@ -119,8 +119,11 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
         }
          else if (i === 0) {
           await new Promise(resolve => setTimeout(resolve, 7500));
-        } else {
+        } 
+         else if (applyBlueColor==1 || applyBlueColor==3) {
           await new Promise(resolve => setTimeout(resolve, 1000));
+        } else {
+          await new Promise(resolve => setTimeout(resolve, 500));
         }
       }
     };

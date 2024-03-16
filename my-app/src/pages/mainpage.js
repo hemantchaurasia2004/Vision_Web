@@ -13,7 +13,7 @@ function Mainpage() {
   const [scrollingEnabled, setScrollingEnabled] = useState(true);
 
   // Define durations for each section (in milliseconds)
-  const durations = [2000, 30000, 6000, 30000, 5000];
+  const durations = [4000, 24000, 6000, 24000, 5000];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -35,7 +35,7 @@ function Mainpage() {
       } else {
         clearInterval(interval);
       }
-    }, durations[scrollIndex]); // Use duration based on scrollIndex
+    }, durations[scrollIndex]);
 
     return () => clearInterval(interval);
   }, [scrollIndex, scrollingEnabled, divRefs, durations]);

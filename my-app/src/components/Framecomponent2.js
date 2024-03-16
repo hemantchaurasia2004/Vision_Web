@@ -88,6 +88,7 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
 
     const animateTyping = async () => {
       const brailleWords = brailleText.split(' ');
+      console.log(brailleWords.length);
       for (let i = 0; i <= brailleWords.length; i++) {
         let displayText = brailleWords.slice(0, i).join(' ');
         displayText += ' ';
@@ -107,16 +108,17 @@ const BrailleToEnglishConverter = ({ brailleText, applyBlueColor }) => {
         if (i === 0 && (applyBlueColor === 1)) {
           await new Promise(resolve => setTimeout(resolve, 1500));
         }
-        else if(i === 0 && (applyBlueColor === 3)){
-          await new Promise(resolve => setTimeout(resolve, 5200));
-        }
          else if (i === 0) {
           await new Promise(resolve => setTimeout(resolve, 7500));
         }
-        else if (applyBlueColor==1 || applyBlueColor==3) {
-          await new Promise(resolve => setTimeout(resolve, 1000));
-        } else {
+        else if (applyBlueColor==1 ) {
+          await new Promise(resolve => setTimeout(resolve, 600));
+        } 
+        else if(i>24){
           await new Promise(resolve => setTimeout(resolve, 500));
+        }
+        else {
+          await new Promise(resolve => setTimeout(resolve, 400));
         }
       }
     };
